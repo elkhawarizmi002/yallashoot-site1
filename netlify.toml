@@ -2,5 +2,9 @@
   command = "npm run build"
   publish = ".next"
 
+[build.environment]
+  SECRETS_SCAN_ENABLED = "false"
+  SECRETS_SCAN_OMIT_KEYS = "GOOGLE_CLIENT_EMAIL,GOOGLE_PRIVATE_KEY,INDEXING_PING_SECRET,STREAM_SECRET_KEY,STREAM_TOKEN_SECRET,MONGODB_URI"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
