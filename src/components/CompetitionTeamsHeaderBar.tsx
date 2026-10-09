@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { getLeagueSlug } from "@/lib/seoSlugs";
 
 interface TeamItem {
   id: number;
@@ -419,7 +420,7 @@ export default function CompetitionTeamsHeaderBar() {
             </button>
 
             <Link
-              href={`/standings/${selectedComp.id}`}
+              href={`/league/${getLeagueSlug(selectedComp.id)}/standings`}
               className="flex items-center gap-2 group hover:opacity-90 transition"
               title={`جدول ترتيب ${selectedComp.name}`}
             >

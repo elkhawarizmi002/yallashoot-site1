@@ -1,6 +1,6 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function StandingsIndexPage() {
-  // Default to Premier League (League ID: 7) as the main standings hub
-  redirect("/standings/7");
+  // Default to Premier League as the primary standings hub
+  permanentRedirect("/league/premier-league-7/standings");
 }

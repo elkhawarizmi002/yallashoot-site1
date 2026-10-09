@@ -4,6 +4,7 @@ import React, { useState, useMemo, useRef } from "react";
 import Link from "next/link";
 import { Trophy, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { toLatinNumerals } from "@/components/providers";
+import { getLeagueSlug } from "@/lib/seoSlugs";
 
 interface StandingsBracketsProps {
   brackets: any;
@@ -146,7 +147,7 @@ export default function StandingsBrackets({ brackets, leagueId }: StandingsBrack
             {brackets.knockoutTitle || "الأدوار الإقصائية"}
           </h3>
           <Link 
-            href={`/standings/${leagueId}?tab=standings`}
+            href={`/league/${getLeagueSlug(leagueId)}/standings?tab=standings`}
             aria-label="إغلاق الأدوار الإقصائية"
             className="text-zinc-400 hover:text-white bg-zinc-850 hover:bg-zinc-800 p-2 min-h-[44px] min-w-[44px] rounded-xl border border-zinc-800 transition flex items-center justify-center"
             title="إغلاق"

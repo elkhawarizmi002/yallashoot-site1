@@ -1,5 +1,5 @@
 import React from "react";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { 
   getCompetitorProfile, 
   getCompetitorSquad, 
@@ -13,6 +13,7 @@ import {
   getCompetitorResults
 } from "@/services/api";
 import TeamDetailsClient from "@/components/TeamDetailsClient";
+import { parseTeamId, getTeamSlug } from "@/lib/seoSlugs";
 
 import { Metadata } from "next";
 
@@ -23,15 +24,21 @@ interface TeamPageProps {
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: TeamPageProps): Promise<Metadata> {
-  const { id: teamId } = await params;
+  const { id: rawSlug } = await params;
+  const teamId = parseTeamId(rawSlug);
+
+  if (!teamId) {
+    return {
+      title: "الفريق غير موجود - يلا شوت",
+      robots: { index: false, follow: true },
+    };
+  }
+
   try {
     const profileRes = await getCompetitorProfile(teamId);
     if (!profileRes || !profileRes.competitors || profileRes.competitors.length === 0) {
       return {
-        title: "الفريق غير موجود - يلا شوت لايف",
-        alternates: {
-          canonical: `/team/${teamId}`,
-        },
+        title: "الفريق غير موجود - يلا شوت",
         robots: {
           index: false,
           follow: true,
@@ -40,14 +47,17 @@ export async function generateMetadata({ params }: TeamPageProps): Promise<Metad
     }
     const team = profileRes.competitors[0];
     const teamName = team.name || "الفريق";
-    const titleText = `فريق ${teamName} - النتائج والتشكيلة ومباريات اليوم | يلا شوت`;
-    const descText = `متابعة مباريات نادي ${teamName} اليوم مباشرة، جداول الترتيب، قائمة اللاعبين، والنتائج الأخيرة مع تغطية شاملة وحصرية.`;
+    const canonicalSlug = getTeamSlug(teamId, team.nameForURL || team.name);
+
+    // Short title strictly ≤ 50 chars including template
+    const titleText = `نادي ${teamName} - النتائج والتشكيلة`;
+    const descText = `متابعة مباريات نادي ${teamName} اليوم مباشرة، جداول الترتيب، قائمة اللاعبين، والنتائج الأخيرة عبر يلا شوت.`;
 
     return {
       title: titleText,
       description: descText,
       alternates: {
-        canonical: `/team/${teamId}`,
+        canonical: `/team/${canonicalSlug}`,
       },
       robots: {
         index: true,
@@ -64,16 +74,17 @@ export async function generateMetadata({ params }: TeamPageProps): Promise<Metad
     };
   } catch {
     return {
-      title: "تفاصيل الفريق - يلا شوت لايف",
+      title: "تفاصيل الفريق - يلا شوت",
       alternates: {
-        canonical: `/team/${teamId}`,
+        canonical: `/team/${rawSlug}`,
       },
     };
   }
 }
 
 export default async function TeamPage({ params }: TeamPageProps) {
-  const { id: teamId } = await params;
+  const { id: rawSlug } = await params;
+  const teamId = parseTeamId(rawSlug);
   
   if (!teamId) {
     return notFound();
@@ -86,6 +97,12 @@ export default async function TeamPage({ params }: TeamPageProps) {
       return notFound();
     }
     const team = profileRes.competitors[0];
+    const canonicalSlug = getTeamSlug(teamId, team.nameForURL || team.name);
+
+    // If accessed by pure ID (/team/132), 301/308 redirect to keyword slug (/team/barcelona-132)
+    if (rawSlug !== canonicalSlug) {
+      permanentRedirect(`/team/${canonicalSlug}`);
+    }
 
     // 2. Fetch squad list
     const squadRes = await getCompetitorSquad(teamId).catch(() => null);
@@ -98,79 +115,46 @@ export default async function TeamPage({ params }: TeamPageProps) {
     let resultsRes = null;
     if (fixturesRes && Array.isArray(fixturesRes.games) && fixturesRes.games.length > 0) {
       const soonestGameId = fixturesRes.games[0].id;
-      resultsRes = await getCompetitorResults(teamId, soonestGameId).catch(() => null);
-    } else if (fixturesRes && fixturesRes.paging?.previousPage) {
-      const match = fixturesRes.paging.previousPage.match(/aftergame=(\d+)/);
-      if (match && match[1]) {
-        resultsRes = await getCompetitorResults(teamId, match[1]).catch(() => null);
+      if (soonestGameId) {
+        resultsRes = await getCompetitorResults(teamId, soonestGameId).catch(() => null);
       }
     }
 
     // 5. Fetch standings table
     const standingsRes = await getCompetitorStandingsTable(teamId).catch(() => null);
-    let standings = null;
-    if (standingsRes && standingsRes.standings && standingsRes.standings.length > 0) {
-      standings = standingsRes.standings[0];
-    }
 
-    // 6. Fetch stats (top scorer rows for this competitor)
+    // 6. Fetch stats
     const statsRes = await getCompetitorStats(teamId).catch(() => null);
 
-    // 7. Fetch SEO description and FAQ
+    // 7. Fetch SEO & related entities
     const seoRes = await getCompetitorSEO(teamId).catch(() => null);
-
-    // 8. Fetch related entities (rivals/related teams)
     const relatedRes = await getCompetitorRelatedEntities(teamId).catch(() => null);
 
-    // 9. Find first competition with brackets and fetch its brackets data
-    let bracketCompetitionId = null;
-    if (profileRes && Array.isArray(profileRes.competitions)) {
-      const compWithBrackets = profileRes.competitions.find((c: any) => c.hasBrackets === true);
-      if (compWithBrackets) {
-        bracketCompetitionId = compWithBrackets.id;
-      }
+    // 8. Fetch brackets if available
+    let bracketsRes = null;
+    if (team.competitionId) {
+      bracketsRes = await getCompetitionBrackets(team.competitionId).catch(() => null);
     }
-
-    let brackets = null;
-    if (bracketCompetitionId) {
-      const bracketsRes = await getCompetitionBrackets(bracketCompetitionId).catch(() => null);
-      if (bracketsRes && bracketsRes.brackets) {
-        brackets = Array.isArray(bracketsRes.brackets) 
-          ? bracketsRes.brackets[0] 
-          : bracketsRes.brackets;
-      }
-    }
-
-    const teamJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "SportsTeam",
-      "name": team.name,
-      "url": `https://www.yallahsoot.com/team/${teamId}`,
-      "logo": `https://imagecache.365scores.com/image/upload/f_auto,w_300,h_300,c_limit,q_auto:eco,d_competitors:default1.png/v1/competitors/${team.id}`,
-      "sport": "Football"
-    };
 
     return (
-      <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(teamJsonLd) }}
-        />
-        <TeamDetailsClient
-          team={team}
-          squad={squadRes || { squads: [] }}
-          transfers={transfersRes || { transfers: [], athletes: [], competitors: [] }}
-          games={[...(resultsRes?.games || []), ...(fixturesRes?.games || [])]}
-          standings={standings}
-          stats={statsRes || null}
-          seo={seoRes}
-          related={relatedRes || { competitors: [] }}
-          brackets={brackets}
-        />
-      </>
+      <TeamDetailsClient
+        team={team}
+        squad={squadRes}
+        transfers={transfersRes}
+        games={fixturesRes?.games || []}
+        standings={standingsRes}
+        stats={statsRes}
+        seo={seoRes}
+        related={relatedRes}
+        brackets={bracketsRes}
+      />
     );
-  } catch (error) {
-    console.error(`Error loading team page for ID ${teamId}:`, error);
+  } catch (err: any) {
+    // Re-throw redirect so Next.js redirect works
+    if (err?.digest?.startsWith("NEXT_REDIRECT")) {
+      throw err;
+    }
+    console.error("Error loading team page:", err);
     return notFound();
   }
 }

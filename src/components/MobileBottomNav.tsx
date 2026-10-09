@@ -57,11 +57,11 @@ export default function MobileBottomNav() {
     {
       id: "standings",
       label: "الترتيب",
-      href: "/standings/11",
+      href: "/league/la-liga-11/standings",
       icon: (active: boolean) => (
         <BarChart3 className={`h-5 w-5 transition-transform ${active ? "scale-110" : ""}`} />
       ),
-      isActive: pathname.startsWith("/standings"),
+      isActive: pathname.startsWith("/standings") || pathname.startsWith("/league"),
     },
     {
       id: "more",
@@ -158,7 +158,7 @@ export default function MobileBottomNav() {
               </Link>
 
               <Link
-                href="/standings/11"
+                href="/league/la-liga-11/standings"
                 onClick={() => setIsMoreOpen(false)}
                 className="flex items-center justify-between p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 text-sm font-bold text-zinc-200 hover:border-emerald-500/30 transition"
               >

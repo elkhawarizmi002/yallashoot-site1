@@ -12,15 +12,15 @@ import AdsterraBanner from "@/components/ads/AdsterraBanner";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "بث مباشر للمباريات اليوم | جدول المباريات والنتائج الحية لحظة بلحظة",
+  title: "مباريات اليوم بث مباشر",
   description: "تابع البث المباشر لأهم مباريات اليوم وجدول النتائج الحية لحظة بلحظة لجميع الدوريات العالمية والبطولات العربية مع تغطية حصرية وإحصائيات دقيقة ومباشرة الآن.",
   alternates: {
-    canonical: "https://www.yallahsoot.com/live",
+    canonical: "/live",
   },
   openGraph: {
-    title: "بث مباشر للمباريات اليوم | يلا شوت",
+    title: "مباريات اليوم بث مباشر | يلا شوت",
     description: "تابع البث المباشر لأهم مباريات اليوم وجدول النتائج الحية لحظة بلحظة لجميع الدوريات العالمية والبطولات العربية مع تغطية حصرية وإحصائيات دقيقة ومباشرة الآن.",
-    url: "https://www.yallahsoot.com/live",
+    url: "/live",
     type: "website",
   },
   robots: {
@@ -102,7 +102,7 @@ export default async function LiveMatchesPage() {
             <Tv className="h-6 w-6 animate-pulse" />
           </div>
           <div className="text-right">
-            <h1 className="text-lg sm:text-xl font-black text-zinc-150 flex items-center gap-2">
+            <h1 className="text-lg sm:text-xl font-black text-zinc-100 flex items-center gap-2">
               مباريات البث المباشر اليوم
             </h1>
             <p className="text-xs text-zinc-450 mt-1">المباريات الجارية والمجدولة التي يتوفر لها بث مباشر حصري</p>

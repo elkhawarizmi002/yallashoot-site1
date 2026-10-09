@@ -39,6 +39,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+      // 1. Permanent 301 for all historical Arabic route prefixes (/ar/...)
+      {
+        source: "/ar/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      // 2. Permanent 301 for other sports (basketball, volleyball, tennis, handball)
+      {
+        source: "/:sport(basketball|volleyball|tennis|handball)/:path*",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

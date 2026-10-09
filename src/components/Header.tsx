@@ -92,9 +92,9 @@ export default function Header() {
               ملخصات المباريات
             </Link>
             <Link
-              href="/standings/11"
+              href="/league/la-liga-11/standings"
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
-                pathname.startsWith("/standings")
+                pathname.startsWith("/standings") || pathname.startsWith("/league")
                   ? "bg-zinc-900 text-emerald-400 border border-zinc-800"
                   : "text-zinc-300 hover:text-zinc-100 hover:bg-zinc-900/50"
               }`}

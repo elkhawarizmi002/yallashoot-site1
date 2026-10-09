@@ -15,10 +15,10 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.yallahsoot.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com"),
   title: {
-    default: "يلا شوت | Yalla Shoot | أهم مباريات اليوم بث مباشر | yallashoot يلاشوت",
-    template: "%s | يلا شوت - Yalla Shoot",
+    default: "يلا شوت | أهم مباريات اليوم بث مباشر",
+    template: "%s | يلا شوت",
   },
   description: "موقع يلا شوت (Yalla Shoot) الرسمي لمتابعة أهم مباريات اليوم بث مباشر بدون تقطيع، نتائج حية وجدول مباريات الدوريات والبطولات وتفاصيل المباريات عبر yallashoot حصرياً.",
   keywords: [
@@ -46,10 +46,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ar_MA",
-    url: "https://www.yallahsoot.com",
-    title: "يلا شوت | Yalla Shoot | أهم مباريات اليوم بث مباشر | yallashoot يلاشوت",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com",
+    title: "يلا شوت | أهم مباريات اليوم بث مباشر",
     description: "موقع يلا شوت (Yalla Shoot) لمتابعة أهم مباريات اليوم بث مباشر بدون تقطيع، نتائج حية وجدول المباريات عبر yallashoot.",
-    siteName: "يلا شوت - Yalla Shoot",
+    siteName: "يلا شوت",
     images: [
       {
         url: "/logo-512.png",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "يلا شوت | Yalla Shoot | أهم مباريات اليوم بث مباشر | yallashoot",
+    title: "يلا شوت | أهم مباريات اليوم بث مباشر",
     description: "موقع يلا شوت (Yalla Shoot) لمتابعة أهم مباريات اليوم بث مباشر بدون تقطيع، نتائج حية وجدول المباريات.",
     images: ["/logo-512.png"],
   },

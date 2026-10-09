@@ -353,17 +353,16 @@ export default function HomePage() {
             
             {/* Header with Calendar Picker & Date Navigation */}
             <div className="flex items-center justify-between bg-zinc-900/80 px-4 py-3.5 border-b border-zinc-800">
-              <h1 className="sr-only">يلا شوت | Yalla Shoot - أهم مباريات اليوم بث مباشر yallashoot</h1>
-              <span className="font-extrabold text-sm sm:text-base text-teal-400">
+              <h1 className="font-extrabold text-sm sm:text-base text-teal-400 m-0 leading-tight">
                 {(() => {
                   const parts = selectedDate.split("/");
                   if (parts.length === 3) {
                     const d = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
-                    return `مباريات ${d.toLocaleDateString("ar-EG", { weekday: "long" })}`;
+                    return `يلا شوت - مباريات ${d.toLocaleDateString("ar-EG", { weekday: "long" })}`;
                   }
-                  return "مباريات اليوم";
+                  return "يلا شوت - أهم مباريات اليوم";
                 })()}
-              </span>
+              </h1>
               
               <div className="flex items-center gap-1.5">
                 <button

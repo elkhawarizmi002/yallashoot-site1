@@ -19,6 +19,7 @@ import {
   GameDetailsResponse, StatsResponse, H2HResponse,
   StandingsResponse, MatchEvent, Member, StandingRow
 } from "@/types/api";
+import { getLeagueSlug, getTeamSlug } from "@/lib/seoSlugs";
 
 const COMMENTATORS = [
   "عصام الشوالي",
@@ -317,7 +318,7 @@ export default function MatchDetailsClient({
         <div className="flex items-center justify-between gap-6">
 
           {/* Home Competitor */}
-          <Link href={`/team/${game.homeCompetitor.id}`} className="flex-1 flex flex-col items-center text-center cursor-pointer group">
+          <Link href={`/team/${getTeamSlug(game.homeCompetitor.id, game.homeCompetitor.name)}`} className="flex-1 flex flex-col items-center text-center cursor-pointer group">
             <img
               src={`https://imagecache.365scores.com/image/upload/f_auto,w_120,h_120,c_limit,q_auto:eco,d_competitors:default1.png/v1/competitors/${game.homeCompetitor.id}`}
               alt={game.homeCompetitor.name}
@@ -353,7 +354,7 @@ export default function MatchDetailsClient({
           </div>
 
           {/* Away Competitor */}
-          <Link href={`/team/${game.awayCompetitor.id}`} className="flex-1 flex flex-col items-center text-center cursor-pointer group">
+          <Link href={`/team/${getTeamSlug(game.awayCompetitor.id, game.awayCompetitor.name)}`} className="flex-1 flex flex-col items-center text-center cursor-pointer group">
             <img
               src={`https://imagecache.365scores.com/image/upload/f_auto,w_120,h_120,c_limit,q_auto:eco,d_competitors:default1.png/v1/competitors/${game.awayCompetitor.id}`}
               alt={game.awayCompetitor.name}
@@ -1038,15 +1039,15 @@ export default function MatchDetailsClient({
 
                 <p className="text-xs sm:text-sm text-zinc-300">
                   تتجه أنظار عشاق كرة القدم اليوم نحو مواجهة قوية تجمع بين نادِ{" "}
-                  <Link href={`/team/${homeCompetitor.id}`} className="text-emerald-400 hover:text-emerald-300 font-bold underline underline-offset-4">
+                  <Link href={`/team/${getTeamSlug(homeCompetitor.id, homeCompetitor.name)}`} className="text-emerald-400 hover:text-emerald-300 font-bold underline underline-offset-4">
                     {homeCompetitor.name}
                   </Link>{" "}
                   ومنافسه نادِ{" "}
-                  <Link href={`/team/${awayCompetitor.id}`} className="text-emerald-400 hover:text-emerald-300 font-bold underline underline-offset-4">
+                  <Link href={`/team/${getTeamSlug(awayCompetitor.id, awayCompetitor.name)}`} className="text-emerald-400 hover:text-emerald-300 font-bold underline underline-offset-4">
                     {awayCompetitor.name}
                   </Link>{" "}
                   ضمن منافسات بطولة{" "}
-                  <Link href={`/standings/${game.competitionId}`} className="text-emerald-400 hover:text-emerald-300 font-bold underline underline-offset-4">
+                  <Link href={`/league/${getLeagueSlug(game.competitionId)}/standings`} className="text-emerald-400 hover:text-emerald-300 font-bold underline underline-offset-4">
                     {leagueName}
                   </Link>
                   . تنطلق صافرة البداية في تمام الساعة{" "}
@@ -1082,7 +1083,7 @@ export default function MatchDetailsClient({
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
                     <Link
-                      href={`/team/${homeCompetitor.id}`}
+                      href={`/team/${getTeamSlug(homeCompetitor.id, homeCompetitor.name)}`}
                       className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-900 border border-zinc-800/80 hover:border-emerald-500/50 hover:bg-zinc-850 transition group"
                     >
                       <div className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/10 transition">
@@ -1097,7 +1098,7 @@ export default function MatchDetailsClient({
                     </Link>
 
                     <Link
-                      href={`/team/${awayCompetitor.id}`}
+                      href={`/team/${getTeamSlug(awayCompetitor.id, awayCompetitor.name)}`}
                       className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-900 border border-zinc-800/80 hover:border-emerald-500/50 hover:bg-zinc-850 transition group"
                     >
                       <div className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/10 transition">
@@ -1112,7 +1113,7 @@ export default function MatchDetailsClient({
                     </Link>
 
                     <Link
-                      href={`/standings/${game.competitionId}`}
+                      href={`/league/${getLeagueSlug(game.competitionId)}/standings`}
                       className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-900 border border-zinc-800/80 hover:border-emerald-500/50 hover:bg-zinc-850 transition group"
                     >
                       <div className="w-7 h-7 rounded-lg bg-zinc-800 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/10 transition">

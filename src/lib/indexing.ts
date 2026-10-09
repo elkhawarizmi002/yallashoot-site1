@@ -2,8 +2,17 @@ import crypto from "crypto";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com";
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "c7a84e912b3446fa9817e08920bc8b20";
-const INDEXNOW_HOST = "www.yallahsoot.com";
-const INDEXNOW_KEY_LOCATION = "https://www.yallahsoot.com/c7a84e912b3446fa9817e08920bc8b20.txt";
+
+const parsedHost = (() => {
+  try {
+    return new URL(SITE_URL).hostname;
+  } catch {
+    return "www.yallahsoot.com";
+  }
+})();
+
+const INDEXNOW_HOST = process.env.INDEXNOW_HOST || parsedHost;
+const INDEXNOW_KEY_LOCATION = `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`;
 
 export interface IndexNowResponse {
   success: boolean;

@@ -1,6 +1,8 @@
 import React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import { Trophy } from "lucide-react";
 import { headers } from "next/headers";
 import { getGameDetails } from "@/services/api";
 import { dbConnect } from "@/lib/db";
@@ -43,8 +45,8 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
     const truncate = (s: string, max: number) => s.length > max ? s.slice(0, max - 1) + "…" : s;
     const shortHome = truncate(homeCompetitor.name, 18);
     const shortAway = truncate(awayCompetitor.name, 18);
-    const titleText = `${shortHome} ضد ${shortAway} بث مباشر | يلا شوت`;
-    const descText = `شاهد بث مباشر مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name} اليوم في ${compName} بجودة عالية وبدون تقطيع عبر يلا شوت (Yalla Shoot). تفاصيل التشكيلة، القنوات الناقلة، والنتيجة لحظة بلحظة على yallashoot.`;
+    const titleText = `${shortHome} ضد ${shortAway} بث مباشر`;
+    const descText = `شاهد بث مباشر مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name} اليوم في ${compName} بجودة عالية عبر يلا شوت.`;
 
     return {
       title: titleText,
@@ -58,9 +60,6 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
         compName,
         "يلا شوت",
         "Yalla Shoot",
-        "yallashoot",
-        "بث مباشر",
-        "مباريات اليوم بث مباشر"
       ],
       alternates: {
         canonical: `/match/${slug}`,
@@ -73,26 +72,18 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
         title: titleText,
         description: descText,
         type: "video.other",
-        images: [
-          {
-            url: "/logo-512.png",
-            width: 512,
-            height: 512,
-            alt: `${homeCompetitor.name} ضد ${awayCompetitor.name} - يلا شوت`,
-          }
-        ],
+        url: `/match/${slug}`,
       },
       twitter: {
         card: "summary_large_image",
         title: titleText,
         description: descText,
-        images: ["/logo-512.png"],
       },
     };
   } catch (error) {
     console.error("Metadata generation error:", error);
     return {
-      title: "تفاصيل المباراة - يلا شوت لايف",
+      title: "تفاصيل المباراة",
       alternates: {
         canonical: `/match/${slug}`,
       },
@@ -115,8 +106,35 @@ export default async function MatchPage({ params }: RouteParams) {
     console.error("Failed to load match details on server:", error);
   }
 
+  // Gracefully handle ended/missing matches without triggering a 404 crawl penalty
   if (!detailsData || !detailsData.game) {
-    notFound();
+    return (
+      <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-16" dir="rtl">
+        <div className="max-w-md bg-zinc-900/80 border border-zinc-800 rounded-3xl p-8 shadow-2xl space-y-5">
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <Trophy className="w-7 h-7" />
+          </div>
+          <h1 className="text-xl font-black text-zinc-100">انتهت تغطية هذه المباراة</h1>
+          <p className="text-xs text-zinc-400 leading-relaxed">
+            انتهت تفاصيل هذه المباراة أو لم تعد متاحة حالياً في البث المباشر. يمكنك متابعة جدول مباريات اليوم المتاح عبر يلا شوت.
+          </p>
+          <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/live"
+              className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 text-xs font-extrabold rounded-xl transition shadow-lg shadow-emerald-500/20"
+            >
+              مباريات اليوم بث مباشر
+            </Link>
+            <Link
+              href="/"
+              className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-bold rounded-xl transition"
+            >
+              الصفحة الرئيسية
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const gameAny = detailsData.game as any;

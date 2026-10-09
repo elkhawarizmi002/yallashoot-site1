@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Award, ChevronLeft } from "lucide-react";
+import { getLeagueSlug } from "@/lib/seoSlugs";
 
 interface LeagueItem {
   id: number;
@@ -69,13 +70,14 @@ export default function SidebarLeagues({ activeLeagueId }: { activeLeagueId?: nu
         {/* Scrollable Horizontal Chips Container */}
         <div className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-1 px-0.5 select-none">
           {POPULAR_LEAGUES.map((league) => {
-            const isSelected = activeLeagueId === league.id || pathname.includes(`/standings/${league.id}`);
+            const slug = getLeagueSlug(league.id);
+            const isSelected = activeLeagueId === league.id || pathname.includes(`/${league.id}`) || pathname.includes(slug);
             
             return (
               <Link
                 key={league.id}
                 ref={isSelected ? activeChipRef : null}
-                href={`/standings/${league.id}`}
+                href={`/league/${slug}/standings`}
                 onClick={handleMobileClick}
                 className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-extrabold shrink-0 transition-all duration-200 cursor-pointer ${
                   isSelected
@@ -111,12 +113,13 @@ export default function SidebarLeagues({ activeLeagueId }: { activeLeagueId?: nu
 
         <div className="space-y-1">
           {POPULAR_LEAGUES.map((league) => {
-            const isSelected = activeLeagueId === league.id || pathname.includes(`/standings/${league.id}`);
+            const slug = getLeagueSlug(league.id);
+            const isSelected = activeLeagueId === league.id || pathname.includes(`/${league.id}`) || pathname.includes(slug);
             
             return (
               <Link
                 key={league.id}
-                href={`/standings/${league.id}`}
+                href={`/league/${slug}/standings`}
                 className={`flex items-center justify-between p-3 min-h-[48px] rounded-xl transition-all duration-200 group ${
                   isSelected
                     ? "bg-emerald-950/60 text-emerald-400 border border-emerald-500/20 shadow-md shadow-emerald-900/5 font-bold"
