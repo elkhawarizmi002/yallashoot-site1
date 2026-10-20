@@ -5,21 +5,21 @@ export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const host = request.headers.get("host") || "";
 
-  // 1. Canonical Host Redirect: yallahsoot.com -> www.yallahsoot.com
-  if (host === "yallahsoot.com") {
-    const redirectUrl = new URL(`https://www.yallahsoot.com${pathname}${search}`);
+  // 1. Canonical Host Redirect: root to www
+  if (host === "yallashoot-ball.com" || host === "yallahsoot.com") {
+    const redirectUrl = new URL(`https://www.yallashoot-ball.com${pathname}${search}`);
     return NextResponse.redirect(redirectUrl, 301);
   }
 
   // 2. Legacy URLs 301 Permanent Redirects (/ar/football/*)
   if (pathname.startsWith("/ar/football")) {
     if (pathname.startsWith("/ar/football/league")) {
-      const redirectUrl = new URL(`https://www.yallahsoot.com/standings${search}`);
+      const redirectUrl = new URL(`/standings${search}`, request.url);
       return NextResponse.redirect(redirectUrl, 301);
     }
 
     if (pathname.startsWith("/ar/football/player") || pathname.startsWith("/ar/football")) {
-      const redirectUrl = new URL(`https://www.yallahsoot.com/${search}`);
+      const redirectUrl = new URL(`/${search}`, request.url);
       return NextResponse.redirect(redirectUrl, 301);
     }
   }
