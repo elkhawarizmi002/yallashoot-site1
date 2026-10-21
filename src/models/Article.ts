@@ -31,7 +31,7 @@ const ArticleSchema = new Schema<IArticle>(
     language: { type: String, default: "ar" },
     image_url: { type: String },
     source_image: { type: String },
-    targetSite: { type: String, default: "yallahsoot.com", index: true },
+    targetSite: { type: String, default: "yallashoot-ball.com", index: true },
     status: {
       type: String,
       enum: ["published", "pending", "draft"],
