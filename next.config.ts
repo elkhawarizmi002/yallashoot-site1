@@ -4,8 +4,6 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://www.yallahsoot.com",
-    "https://yallahsoot.com",
     "https://www.yallashoot-ball.com",
     "https://yallashoot-ball.com",
   ],

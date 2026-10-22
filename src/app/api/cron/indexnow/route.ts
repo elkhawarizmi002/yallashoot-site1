@@ -18,7 +18,7 @@ async function runIndexNowSubmission(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallashoot-ball.com";
 
   try {
     await dbConnect();

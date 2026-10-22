@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "اتصل بنا - يلا شوت لايف",
     description: "تواصل مع إدارة موقع وتطبيق يلا شوت لايف لمتابعة الاستفسارات والاقتراحات والبلاغات.",
-    url: "https://www.yallahsoot.com/contact",
+    url: "https://www.yallashoot-ball.com/contact",
   },
 };
 
@@ -47,7 +47,7 @@ export default function ContactPage() {
           اتصل بنا
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-100">
-          اتصل بإدارة منصة يلا شوت لايف (yallahsoot.com)
+          اتصل بإدارة منصة يلا شوت لايف (yallashoot-ball.com)
         </h1>
         <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
           نحن هنا لمساعدتك! يسعدنا استلام استفساراتك، ملاحظاتك لتطوير الخدمة، أو البلاغات الفنية وحقوق النشر.
@@ -60,7 +60,7 @@ export default function ContactPage() {
       {/* Direct Contact Notice */}
       <div className="bg-zinc-900/60 border border-zinc-850 rounded-2xl p-4 text-center text-xs text-zinc-400 flex items-center justify-center gap-2">
         <ShieldCheck className="h-4 w-4 text-emerald-400" />
-        يمكنك أيضاً المراسلة المباشرة عبر البريد الإلكتروني: <span className="font-mono text-emerald-400">contact@yallahsoot.com</span>
+        يمكنك أيضاً المراسلة المباشرة عبر البريد الإلكتروني: <span className="font-mono text-emerald-400">contact@yallashoot-ball.com</span>
       </div>
     </div>
   );

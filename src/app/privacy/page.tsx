@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           سياسة الخصوصية والأمان
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-100">
-          سياسة الخصوصية - يلا شوت لايف (yallahsoot.com)
+          سياسة الخصوصية - يلا شوت لايف (yallashoot-ball.com)
         </h1>
         <p className="text-xs sm:text-sm text-zinc-400">
           آخر تحديث: {toLatinNumerals(new Date().toLocaleDateString("ar-EG-u-nu-latn", { year: "numeric", month: "long", day: "numeric" }))}
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
             1. مقدمة واستخدام البيانات
           </h2>
           <p>
-            نحن في **يلا شوت لايف (yallahsoot.com)** نولي أهمية قصوى لخصوصية زوارنا الكرام. تصف هذه الوثيقة أنواع المعلومات الشخصية التي يتم استلامها وجمعها وكيفية استخدامها لحماية وتطوير تجربة التصفح الخاصة بك.
+            نحن في **يلا شوت لايف (yallashoot-ball.com)** نولي أهمية قصوى لخصوصية زوارنا الكرام. تصف هذه الوثيقة أنواع المعلومات الشخصية التي يتم استلامها وجمعها وكيفية استخدامها لحماية وتطوير تجربة التصفح الخاصة بك.
           </p>
         </section>
 

@@ -10,7 +10,7 @@ import { getLeagueSlug, getTeamSlug } from "@/lib/seoSlugs";
 export const revalidate = 1800; // Revalidate sitemap every 30 minutes (Bing requirement)
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallashoot-ball.com";
 
   // 1. Static Core Site Pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -103,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Query published articles
     const articles = await Article.find({ status: "published" })
       .sort({ published_at: -1 })
-      .limit(300)
+      .limit(2000)
       .lean();
 
     newsUrls = articles.map((article: any) => ({

@@ -35,7 +35,7 @@ export default function AboutPage() {
       <div className="bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950/30 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-black">
           <Trophy className="h-4 w-4" />
-          يلا شوت لايف yallahsoot
+          يلا شوت لايف yallashoot-ball.com
         </div>
         <h1 className="text-2xl sm:text-4xl font-extrabold text-zinc-100 leading-snug">
           من نحن - عن منصة يلا شوت الرياضية

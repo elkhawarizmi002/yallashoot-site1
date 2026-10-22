@@ -100,19 +100,19 @@ export default async function NewsArticlePage({ params }: PageProps) {
     "author": [{
       "@type": "Organization",
       "name": article.source || "يلا شوت لايف",
-      "url": "https://www.yallahsoot.com"
+      "url": "https://www.yallashoot-ball.com"
     }],
     "publisher": {
       "@type": "Organization",
       "name": "يلا شوت لايف",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.yallahsoot.com/fav-icon.svg"
+        "url": "https://www.yallashoot-ball.com/fav-icon.svg"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://www.yallahsoot.com/news/${article.slug || id}`
+      "@id": `https://www.yallashoot-ball.com/news/${article.slug || id}`
     }
   };
 

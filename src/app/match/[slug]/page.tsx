@@ -179,43 +179,43 @@ export default async function MatchPage({ params }: RouteParams) {
     "homeTeam": {
       "@type": "SportsTeam",
       "name": homeCompetitor.name,
-      "url": `https://www.yallahsoot.com/team/${homeCompetitor.id}`,
+      "url": `https://www.yallashoot-ball.com/team/${homeCompetitor.id}`,
       "logo": homeLogo
     },
     "awayTeam": {
       "@type": "SportsTeam",
       "name": awayCompetitor.name,
-      "url": `https://www.yallahsoot.com/team/${awayCompetitor.id}`,
+      "url": `https://www.yallashoot-ball.com/team/${awayCompetitor.id}`,
       "logo": awayLogo
     },
     "performer": [
       {
         "@type": "SportsTeam",
         "name": homeCompetitor.name,
-        "url": `https://www.yallahsoot.com/team/${homeCompetitor.id}`,
+        "url": `https://www.yallashoot-ball.com/team/${homeCompetitor.id}`,
         "image": homeLogo
       },
       {
         "@type": "SportsTeam",
         "name": awayCompetitor.name,
-        "url": `https://www.yallahsoot.com/team/${awayCompetitor.id}`,
+        "url": `https://www.yallashoot-ball.com/team/${awayCompetitor.id}`,
         "image": awayLogo
       }
     ],
     "organizer": {
       "@type": "Organization",
       "name": compName,
-      "url": "https://www.yallahsoot.com"
+      "url": "https://www.yallashoot-ball.com"
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://www.yallahsoot.com/match/${slug}`,
+      "url": `https://www.yallashoot-ball.com/match/${slug}`,
       "price": "0",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "validFrom": startIso
     },
-    "url": `https://www.yallahsoot.com/match/${slug}`
+    "url": `https://www.yallashoot-ball.com/match/${slug}`
   };
 
   return (

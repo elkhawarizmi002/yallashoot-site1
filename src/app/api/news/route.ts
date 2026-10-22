@@ -123,7 +123,7 @@ export async function POST(request: Request) {
     });
 
     // Auto-trigger instant indexing to Google & Bing
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com";
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallashoot-ball.com";
     const articleUrl = `${siteUrl}/news/${newArticle.slug || newArticle._id}`;
 
     // Non-blocking call to notify search engines

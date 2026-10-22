@@ -1299,7 +1299,7 @@ export default function HomePage() {
 
             {/* Footer Institutional & Legal Links Bar */}
             <div className="border-t border-zinc-800 pt-5 flex items-center justify-center text-xs font-bold text-zinc-400">
-              <p>© {new Date().getFullYear()} يلا شوت لايف yallahsoot.com - جميع الحقوق محفوظة.</p>
+              <p>© {new Date().getFullYear()} يلا شوت لايف yallashoot-ball.com - جميع الحقوق محفوظة.</p>
             </div>
 
           </div>

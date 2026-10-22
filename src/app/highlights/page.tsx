@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ملخصات وأهداف المباريات | يلا شوت لايف",
     description: "شاهد أهداف وملخصات أهم مباريات اليوم والدوريات العالمية والأفريقية مجاناً وبجودة عالية.",
-    url: "https://www.yallahsoot.com/highlights",
+    url: "https://www.yallashoot-ball.com/highlights",
   },
 };
 

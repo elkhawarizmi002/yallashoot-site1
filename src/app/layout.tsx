@@ -15,7 +15,7 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallashoot-ball.com"),
   title: {
     default: "يلا شوت | أهم مباريات اليوم بث مباشر",
     template: "%s | يلا شوت",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     "كورة لايف",
     "نتائج المباريات",
     "جدول مباريات اليوم",
-    "yallashoot.com",
-    "yallahsoot"
+    "yallashoot-ball.com",
+    "yallashoot"
   ],
   authors: [{ name: "Yalla Shoot Team" }],
   manifest: "/manifest.json",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ar_MA",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallashoot-ball.com",
     title: "يلا شوت | أهم مباريات اليوم بث مباشر",
     description: "موقع يلا شوت (Yalla Shoot) لمتابعة أهم مباريات اليوم بث مباشر بدون تقطيع، نتائج حية وجدول المباريات عبر yallashoot.",
     siteName: "يلا شوت",
@@ -109,39 +109,39 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://www.yallahsoot.com/#website",
+        "@id": "https://www.yallashoot-ball.com/#website",
         "name": "يلا شوت | Yalla Shoot",
         "alternateName": [
           "yallashoot",
           "yalla shoot",
           "يلاشوت",
           "يلا شوت لايف",
-          "yallahsoot",
+          "yallashoot-ball",
           "yalla shoot live"
         ],
-        "url": "https://www.yallahsoot.com",
+        "url": "https://www.yallashoot-ball.com",
         "description": "موقع يلا شوت (Yalla Shoot) الرسمي لمتابعة أهم مباريات اليوم بث مباشر بدون تقطيع، نتائج حية وجدول المباريات.",
         "inLanguage": "ar",
-        "image": "https://www.yallahsoot.com/logo-512.png",
-        "thumbnailUrl": "https://www.yallahsoot.com/logo-512.png",
+        "image": "https://www.yallashoot-ball.com/logo-512.png",
+        "thumbnailUrl": "https://www.yallashoot-ball.com/logo-512.png",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://www.yallahsoot.com/news?q={search_term_string}",
+          "target": "https://www.yallashoot-ball.com/news?q={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       },
       {
         "@type": "SportsOrganization",
-        "@id": "https://www.yallahsoot.com/#organization",
+        "@id": "https://www.yallashoot-ball.com/#organization",
         "name": "يلا شوت - Yalla Shoot",
-        "url": "https://www.yallahsoot.com",
+        "url": "https://www.yallashoot-ball.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.yallahsoot.com/logo-512.png",
+          "url": "https://www.yallashoot-ball.com/logo-512.png",
           "width": 512,
           "height": 512
         },
-        "image": "https://www.yallahsoot.com/logo-512.png"
+        "image": "https://www.yallashoot-ball.com/logo-512.png"
       }
     ]
   };
@@ -158,8 +158,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#10b981" />
         
         {/* Search Engine Snippet Thumbnail Tags (Bing & Google Rich Results) */}
-        <meta name="thumbnail" content="https://www.yallahsoot.com/logo-512.png" />
-        <link rel="image_src" href="https://www.yallahsoot.com/logo-512.png" />
+        <meta name="thumbnail" content="https://www.yallashoot-ball.com/logo-512.png" />
+        <link rel="image_src" href="https://www.yallashoot-ball.com/logo-512.png" />
 
         <script
           type="application/ld+json"

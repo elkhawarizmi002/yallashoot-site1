@@ -36,4 +36,4 @@ Disallow: /
 User-agent: Irdeto
 Disallow: /
 
-Sitemap: https://www.yallahsoot.com/sitemap.xml
+Sitemap: https://www.yallashoot-ball.com/sitemap.xml

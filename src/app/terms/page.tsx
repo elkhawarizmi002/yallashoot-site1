@@ -5,7 +5,7 @@ import { ChevronRight, FileCheck, AlertTriangle, Copyright, Scale } from "lucide
 
 export const metadata: Metadata = {
   title: "شروط الاستخدام وحقوق النشر - يلا شوت لايف",
-  description: "اتفاقية وشروط الاستخدام وسياسة حقوق النشر لموقع وتطبيق يلا شوت لايف yallahsoot.",
+  description: "اتفاقية وشروط الاستخدام وسياسة حقوق النشر لموقع وتطبيق يلا شوت لايف yallashoot-ball.com.",
   openGraph: {
     title: "شروط الاستخدام وحقوق النشر - يلا شوت لايف",
     description: "الأحكام الشروط القانونية لاستخدام منصة وتطبيق يلا شوت لايف.",
@@ -41,7 +41,7 @@ export default function TermsPage() {
           شروط الاستخدام وسياسة الملكية - يلا شوت لايف
         </h1>
         <p className="text-xs sm:text-sm text-zinc-400">
-          دخولك واستخدامك لمنصة **yallahsoot.com** يعني موافقتك الكاملة على الشروط المدونة أدناه.
+          دخولك واستخدامك لمنصة **yallashoot-ball.com** يعني موافقتك الكاملة على الشروط المدونة أدناه.
         </p>
       </div>
 

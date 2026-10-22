@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 export default function GoogleAnalytics() {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-EB5NF1F5XN";
+  const gaId = process.env.NEXT_PUBLIC_GA_ID?.trim();
 
   if (!gaId) return null;
 

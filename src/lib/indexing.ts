@@ -1,13 +1,13 @@
 import crypto from "crypto";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallahsoot.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallashoot-ball.com";
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "c7a84e912b3446fa9817e08920bc8b20";
 
 const parsedHost = (() => {
   try {
     return new URL(SITE_URL).hostname;
   } catch {
-    return "www.yallahsoot.com";
+    return "www.yallashoot-ball.com";
   }
 })();
 
