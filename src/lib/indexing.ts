@@ -1,7 +1,7 @@
 import crypto from "crypto";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.yallashoot-ball.com";
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "c7a84e912b3446fa9817e08920bc8b20";
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "753fc6d80f854a3f8adfbd88be6d01b0";
 
 const parsedHost = (() => {
   try {
