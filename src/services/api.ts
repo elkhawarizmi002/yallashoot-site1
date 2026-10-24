@@ -29,14 +29,18 @@ async function fetchFrom365Scores<T>(endpoint: string, queryParams: Record<strin
   const url = `${BASE_URL}${endpoint}?${urlParams.toString()}`;
 
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
+
     const res = await fetch(url, {
       ...cacheOptions,
+      signal: cacheOptions.signal || controller.signal,
       headers: {
         "Accept": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         ...cacheOptions.headers,
       },
-    });
+    }).finally(() => clearTimeout(timeoutId));
 
     if (!res.ok) {
       throw new Error(`Failed to fetch from 365Scores upstream: ${res.statusText} (${res.status})`);

@@ -104,36 +104,34 @@ export default async function TeamPage({ params }: TeamPageProps) {
       permanentRedirect(`/team/${canonicalSlug}`);
     }
 
-    // 2. Fetch squad list
-    const squadRes = await getCompetitorSquad(teamId).catch(() => null);
+    // 2. Fetch squad, transfers, fixtures, standings, stats, SEO, related concurrently
+    const [
+      squadRes,
+      transfersRes,
+      fixturesRes,
+      standingsRes,
+      statsRes,
+      seoRes,
+      relatedRes,
+      bracketsRes,
+    ] = await Promise.all([
+      getCompetitorSquad(teamId).catch(() => null),
+      getCompetitorTransfers(teamId).catch(() => null),
+      getCompetitorFixtures(teamId).catch(() => null),
+      getCompetitorStandingsTable(teamId).catch(() => null),
+      getCompetitorStats(teamId).catch(() => null),
+      getCompetitorSEO(teamId).catch(() => null),
+      getCompetitorRelatedEntities(teamId).catch(() => null),
+      team.competitionId ? getCompetitionBrackets(team.competitionId).catch(() => null) : Promise.resolve(null),
+    ]);
 
-    // 3. Fetch transfers list
-    const transfersRes = await getCompetitorTransfers(teamId).catch(() => null);
-
-    // 4. Fetch fixtures and results
-    const fixturesRes = await getCompetitorFixtures(teamId).catch(() => null);
+    // 3. Fetch past results if fixtures found
     let resultsRes = null;
     if (fixturesRes && Array.isArray(fixturesRes.games) && fixturesRes.games.length > 0) {
       const soonestGameId = fixturesRes.games[0].id;
       if (soonestGameId) {
         resultsRes = await getCompetitorResults(teamId, soonestGameId).catch(() => null);
       }
-    }
-
-    // 5. Fetch standings table
-    const standingsRes = await getCompetitorStandingsTable(teamId).catch(() => null);
-
-    // 6. Fetch stats
-    const statsRes = await getCompetitorStats(teamId).catch(() => null);
-
-    // 7. Fetch SEO & related entities
-    const seoRes = await getCompetitorSEO(teamId).catch(() => null);
-    const relatedRes = await getCompetitorRelatedEntities(teamId).catch(() => null);
-
-    // 8. Fetch brackets if available
-    let bracketsRes = null;
-    if (team.competitionId) {
-      bracketsRes = await getCompetitionBrackets(team.competitionId).catch(() => null);
     }
 
     return (
