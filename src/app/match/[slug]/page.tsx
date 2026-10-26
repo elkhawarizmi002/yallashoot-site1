@@ -43,24 +43,35 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
     const compName = competitionDisplayName || competitionName || "مباراة اليوم";
     // Keep title ≤70 chars — use short team names and minimal suffix
     const truncate = (s: string, max: number) => s.length > max ? s.slice(0, max - 1) + "…" : s;
+    const isFinished = gameAny.statusGroup === 4;
     const shortHome = truncate(homeCompetitor.name, 18);
     const shortAway = truncate(awayCompetitor.name, 18);
-    const titleText = `${shortHome} ضد ${shortAway} بث مباشر`;
-    const descText = `شاهد بث مباشر مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name} اليوم في ${compName} بجودة عالية عبر يلا شوت.`;
+    const titleText = isFinished
+      ? `${shortHome} (${homeCompetitor.score ?? 0} - ${awayCompetitor.score ?? 0}) ${shortAway} - نتيجة وتفاصيل المباراة`
+      : `${shortHome} ضد ${shortAway} - موعد وتفاصيل المباراة`;
+    const descText = isFinished
+      ? `تفاصيل ونتيجة مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name} في ${compName}. انتهت المباراة بنتيجة (${homeCompetitor.score ?? 0} - ${awayCompetitor.score ?? 0}). التشكيلة والإحصائيات الكاملة عبر يلا شوت.`
+      : `موعد وتفاصيل مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name} اليوم في ${compName} والقنوات الناقلة ومعلق اللقاء عبر يلا شوت.`;
 
     return {
       title: titleText,
       description: descText,
-      keywords: [
-        `مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name}`,
-        `بث مباشر مباراة ${homeCompetitor.name}`,
-        `بث مباشر ${awayCompetitor.name}`,
-        `مباراة ${homeCompetitor.name} اليوم`,
-        `مباراة ${awayCompetitor.name} اليوم`,
-        compName,
-        "يلا شوت",
-        "Yalla Shoot",
-      ],
+      keywords: isFinished
+        ? [
+            `نتيجة مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name}`,
+            `أهداف مباراة ${homeCompetitor.name} و ${awayCompetitor.name}`,
+            `ملخص مباراة ${homeCompetitor.name}`,
+            compName,
+            "يلا شوت",
+          ]
+        : [
+            `مباراة ${homeCompetitor.name} ضد ${awayCompetitor.name}`,
+            `موعد مباراة ${homeCompetitor.name} و ${awayCompetitor.name}`,
+            `القنوات الناقلة لمباراة ${homeCompetitor.name}`,
+            compName,
+            "يلا شوت",
+            "Yalla Shoot",
+          ],
       alternates: {
         canonical: `/match/${slug}`,
       },
@@ -71,7 +82,7 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
       openGraph: {
         title: titleText,
         description: descText,
-        type: "video.other",
+        type: "website",
         url: `/match/${slug}`,
       },
       twitter: {
@@ -230,7 +241,9 @@ export default async function MatchPage({ params }: RouteParams) {
           <span className="text-emerald-400">{homeCompetitor.name}</span>
           <span className="mx-2 text-zinc-500">ضد</span>
           <span className="text-emerald-400">{awayCompetitor.name}</span>
-          <span className="ml-2 text-sm font-semibold text-zinc-400">— بث مباشر</span>
+          <span className="ml-2 text-sm font-semibold text-zinc-400">
+            {detailsData.game.statusGroup === 4 ? "— نتيجة وتفاصيل اللقاء" : "— موعد وتفاصيل المباراة"}
+          </span>
         </h1>
         <p className="text-xs text-zinc-500 mt-1 font-medium">
           {compName} • {new Date(startTime || Date.now()).toLocaleDateString("ar-EG", { weekday: "long", day: "numeric", month: "long" })}

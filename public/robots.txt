@@ -26,7 +26,19 @@ Disallow: /api/streams/
 Disallow: /api/refresh-url/
 Crawl-delay: 1
 
-# Block known aggressive DMCA scanning bots
+# Block known aggressive DMCA scanning bots & copyright enforcement agencies
+User-agent: LeakID
+Disallow: /
+
+User-agent: LeakID-Bot
+Disallow: /
+
+User-agent: NetResult
+Disallow: /
+
+User-agent: Audio-Video-Copyright
+Disallow: /
+
 User-agent: MarkMonitor
 Disallow: /
 

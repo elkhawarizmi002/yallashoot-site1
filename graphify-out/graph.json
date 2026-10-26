@@ -66,7 +66,7 @@
       "file_type": "code",
       "norm_label": "secureplayerprops",
       "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L12"
+      "source_location": "L26"
     },
     {
       "id": "src_components_secureplayer_serveritem",
@@ -79,7 +79,7 @@
       "file_type": "code",
       "norm_label": "serveritem",
       "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L6"
+      "source_location": "L20"
     },
     {
       "id": "src_components_streamcountdown_streamcountdownprops",
@@ -904,7 +904,7 @@
       "file_type": "code",
       "norm_label": "delete()",
       "source_file": "src/app/api/streams/route.ts",
-      "source_location": "L164"
+      "source_location": "L165"
     },
     {
       "id": "src_app_api_streams_route_get",
@@ -931,6 +931,18 @@
       "source_location": "L64"
     },
     {
+      "id": "src_app_live_page_livematchespage",
+      "label": "LiveMatchesPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "dbConnect",
+      "file_type": "code",
+      "norm_label": "livematchespage()",
+      "source_file": "src/app/live/page.tsx",
+      "source_location": "L32"
+    },
+    {
       "id": "src_app_match_slug_page_generatemetadata",
       "label": "generateMetadata()",
       "_callable": true,
@@ -952,7 +964,7 @@
       "file_type": "code",
       "norm_label": "matchpage()",
       "source_file": "src/app/match/[slug]/page.tsx",
-      "source_location": "L97"
+      "source_location": "L108"
     },
     {
       "id": "src_app_sitemap_sitemap",
@@ -1048,7 +1060,7 @@
       "file_type": "code",
       "norm_label": "getgamedetails()",
       "source_file": "src/services/api.ts",
-      "source_location": "L87"
+      "source_location": "L91"
     },
     {
       "id": "src_services_api_getgameslist",
@@ -1060,7 +1072,7 @@
       "file_type": "code",
       "norm_label": "getgameslist()",
       "source_file": "src/services/api.ts",
-      "source_location": "L61"
+      "source_location": "L65"
     },
     {
       "id": "src_components_secureplayer_secureplayer",
@@ -1072,7 +1084,7 @@
       "file_type": "code",
       "norm_label": "secureplayer()",
       "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L37"
+      "source_location": "L51"
     },
     {
       "id": "src_components_streamcountdown_streamcountdown",
@@ -1360,7 +1372,7 @@
       "file_type": "code",
       "norm_label": "getcompetitionbrackets()",
       "source_file": "src/services/api.ts",
-      "source_location": "L365"
+      "source_location": "L369"
     },
     {
       "id": "src_services_api_getcompetitionstandings",
@@ -1372,7 +1384,7 @@
       "file_type": "code",
       "norm_label": "getcompetitionstandings()",
       "source_file": "src/services/api.ts",
-      "source_location": "L144"
+      "source_location": "L148"
     },
     {
       "id": "src_services_api_getcompetitorfixtures",
@@ -1384,7 +1396,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorfixtures()",
       "source_file": "src/services/api.ts",
-      "source_location": "L268"
+      "source_location": "L272"
     },
     {
       "id": "src_services_api_getcompetitorprofile",
@@ -1396,7 +1408,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorprofile()",
       "source_file": "src/services/api.ts",
-      "source_location": "L235"
+      "source_location": "L239"
     },
     {
       "id": "src_services_api_getcompetitorrelatedentities",
@@ -1408,7 +1420,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorrelatedentities()",
       "source_file": "src/services/api.ts",
-      "source_location": "L333"
+      "source_location": "L337"
     },
     {
       "id": "src_services_api_getcompetitorresults",
@@ -1420,7 +1432,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorresults()",
       "source_file": "src/services/api.ts",
-      "source_location": "L283"
+      "source_location": "L287"
     },
     {
       "id": "src_services_api_getcompetitorseo",
@@ -1432,7 +1444,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorseo()",
       "source_file": "src/services/api.ts",
-      "source_location": "L344"
+      "source_location": "L348"
     },
     {
       "id": "src_services_api_getcompetitorsquad",
@@ -1444,7 +1456,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorsquad()",
       "source_file": "src/services/api.ts",
-      "source_location": "L246"
+      "source_location": "L250"
     },
     {
       "id": "src_services_api_getcompetitorstandingstable",
@@ -1456,7 +1468,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorstandingstable()",
       "source_file": "src/services/api.ts",
-      "source_location": "L300"
+      "source_location": "L304"
     },
     {
       "id": "src_services_api_getcompetitorstats",
@@ -1468,7 +1480,7 @@
       "file_type": "code",
       "norm_label": "getcompetitorstats()",
       "source_file": "src/services/api.ts",
-      "source_location": "L315"
+      "source_location": "L319"
     },
     {
       "id": "src_services_api_getcompetitortransfers",
@@ -1480,7 +1492,7 @@
       "file_type": "code",
       "norm_label": "getcompetitortransfers()",
       "source_file": "src/services/api.ts",
-      "source_location": "L257"
+      "source_location": "L261"
     },
     {
       "id": "src_services_api_getcurrentstage",
@@ -1492,7 +1504,7 @@
       "file_type": "code",
       "norm_label": "getcurrentstage()",
       "source_file": "src/services/api.ts",
-      "source_location": "L128"
+      "source_location": "L132"
     },
     {
       "id": "src_services_api_getgamestats",
@@ -1504,7 +1516,7 @@
       "file_type": "code",
       "norm_label": "getgamestats()",
       "source_file": "src/services/api.ts",
-      "source_location": "L99"
+      "source_location": "L103"
     },
     {
       "id": "src_services_api_getheadtohead",
@@ -1516,7 +1528,7 @@
       "file_type": "code",
       "norm_label": "getheadtohead()",
       "source_file": "src/services/api.ts",
-      "source_location": "L112"
+      "source_location": "L116"
     },
     {
       "id": "src_app_standings_page_standingsindexpage",
@@ -1541,18 +1553,6 @@
       "norm_label": "highlightspage()",
       "source_file": "src/app/highlights/page.tsx",
       "source_location": "L22"
-    },
-    {
-      "id": "src_app_live_page_livematchespage",
-      "label": "LiveMatchesPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "news/[id]/page.tsx",
-      "file_type": "code",
-      "norm_label": "livematchespage()",
-      "source_file": "src/app/live/page.tsx",
-      "source_location": "L32"
     },
     {
       "id": "src_app_news_id_page_generatemetadata",
@@ -2224,7 +2224,7 @@
       "file_type": "code",
       "norm_label": "getcompetitiongames()",
       "source_file": "src/services/api.ts",
-      "source_location": "L179"
+      "source_location": "L183"
     },
     {
       "id": "src_services_api_getcompetitionscorers",
@@ -2236,7 +2236,7 @@
       "file_type": "code",
       "norm_label": "getcompetitionscorers()",
       "source_file": "src/services/api.ts",
-      "source_location": "L200"
+      "source_location": "L204"
     },
     {
       "id": "src_app_api_games_route",
@@ -2380,6 +2380,39 @@
       "norm_label": "dynamic",
       "source_file": "src/app/api/streams/route.ts",
       "source_location": "L8"
+    },
+    {
+      "id": "src_app_live_page",
+      "label": "live/page.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "dbConnect",
+      "file_type": "code",
+      "norm_label": "live/page.tsx",
+      "source_file": "src/app/live/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_live_page_dynamic",
+      "label": "dynamic",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "dbConnect",
+      "file_type": "code",
+      "norm_label": "dynamic",
+      "source_file": "src/app/live/page.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_app_live_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "dbConnect",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "src/app/live/page.tsx",
+      "source_location": "L14"
     },
     {
       "id": "src_app_match_slug_page",
@@ -3315,28 +3348,6 @@
       "source_location": "L1"
     },
     {
-      "id": "next_config",
-      "label": "next.config.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "news/[id]/page.tsx",
-      "file_type": "code",
-      "norm_label": "next.config.ts",
-      "source_file": "next.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "next_config_nextconfig",
-      "label": "nextConfig",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "news/[id]/page.tsx",
-      "file_type": "code",
-      "norm_label": "nextconfig",
-      "source_file": "next.config.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "src_app_highlights_page",
       "label": "highlights/page.tsx",
       "_origin": "ast",
@@ -3357,39 +3368,6 @@
       "norm_label": "metadata",
       "source_file": "src/app/highlights/page.tsx",
       "source_location": "L5"
-    },
-    {
-      "id": "src_app_live_page",
-      "label": "live/page.tsx",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "news/[id]/page.tsx",
-      "file_type": "code",
-      "norm_label": "live/page.tsx",
-      "source_file": "src/app/live/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_app_live_page_dynamic",
-      "label": "dynamic",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "news/[id]/page.tsx",
-      "file_type": "code",
-      "norm_label": "dynamic",
-      "source_file": "src/app/live/page.tsx",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_app_live_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "news/[id]/page.tsx",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "src/app/live/page.tsx",
-      "source_location": "L14"
     },
     {
       "id": "src_app_news_id_page",
@@ -3588,17 +3566,6 @@
       "norm_label": "articleschema",
       "source_file": "src/models/Article.ts",
       "source_location": "L21"
-    },
-    {
-      "id": "ref_next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "news/[id]/page.tsx",
-      "file_type": "concept",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L18"
     },
     {
       "id": "ref_tanstack_react_query",
@@ -4129,6 +4096,28 @@
       "source_location": "L1"
     },
     {
+      "id": "next_config",
+      "label": "next.config.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "next.config.ts",
+      "source_file": "next.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "next_config_nextconfig",
+      "label": "nextConfig",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "nextconfig",
+      "source_file": "next.config.ts",
+      "source_location": "L3"
+    },
+    {
       "id": "src_app_about_page",
       "label": "about/page.tsx",
       "_origin": "ast",
@@ -4325,6 +4314,17 @@
       "norm_label": "lucide-react",
       "source_file": "package.json",
       "source_location": "L15"
+    },
+    {
+      "id": "ref_next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L18"
     },
     {
       "id": "ref_react",
@@ -5067,7 +5067,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/api/streams/route.ts",
-      "source_location": "L166",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -5103,7 +5103,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/api/streams/route.ts",
-      "source_location": "L148",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -5348,18 +5348,6 @@
     },
     {
       "source": "src_app_match_slug_page_matchpage",
-      "target": "src_services_api_getgamedetails",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/app/match/[slug]/page.tsx",
-      "source_location": "L104",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_match_slug_page_matchpage",
       "target": "src_lib_matchslug_extractidfromslug",
       "relation": "calls",
       "_origin": "ast",
@@ -5367,7 +5355,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/match/[slug]/page.tsx",
-      "source_location": "L99",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_match_slug_page_matchpage",
+      "target": "src_services_api_getgamedetails",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/app/match/[slug]/page.tsx",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -5655,7 +5655,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L108",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -5667,7 +5667,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L111",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -5679,19 +5679,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L114",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_team_id_page_teampage",
-      "target": "src_services_api_getcompetitorresults",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L119",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -5703,7 +5691,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L124",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -5715,7 +5703,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L127",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -5727,7 +5715,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L130",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -5739,7 +5727,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L131",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -5751,7 +5739,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/team/[id]/page.tsx",
-      "source_location": "L136",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_team_id_page_teampage",
+      "target": "src_services_api_getcompetitorresults",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/app/team/[id]/page.tsx",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -5896,6 +5896,18 @@
       "context": "call",
       "source_file": "src/components/providers.tsx",
       "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_secureplayer_secureplayer",
+      "target": "src_lib_smartlink_triggersmartlink",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/SecurePlayer.tsx",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -6111,7 +6123,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L366",
+      "source_location": "L370",
       "weight": 1.0
     },
     {
@@ -6123,7 +6135,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L147",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -6135,7 +6147,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L164",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -6147,7 +6159,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L269",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
@@ -6159,7 +6171,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L236",
+      "source_location": "L240",
       "weight": 1.0
     },
     {
@@ -6171,7 +6183,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L334",
+      "source_location": "L338",
       "weight": 1.0
     },
     {
@@ -6183,7 +6195,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L284",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -6195,7 +6207,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L247",
+      "source_location": "L251",
       "weight": 1.0
     },
     {
@@ -6207,7 +6219,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L301",
+      "source_location": "L305",
       "weight": 1.0
     },
     {
@@ -6219,7 +6231,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L319",
+      "source_location": "L323",
       "weight": 1.0
     },
     {
@@ -6231,7 +6243,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L258",
+      "source_location": "L262",
       "weight": 1.0
     },
     {
@@ -6243,7 +6255,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L129",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -6255,7 +6267,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L88",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -6267,7 +6279,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L68",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -6279,7 +6291,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L100",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -6291,7 +6303,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L117",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -8205,14 +8217,14 @@
     },
     {
       "source": "src_components_secureplayer",
-      "target": "src_components_streamsection_streamsection",
+      "target": "src_lib_smartlink_triggersmartlink",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L4",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -10595,6 +10607,18 @@
     },
     {
       "source": "src_components_secureplayer",
+      "target": "src_lib_smartlink",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/SecurePlayer.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_secureplayer",
       "target": "ref_react",
       "relation": "imports_from",
       "_origin": "ast",
@@ -10607,14 +10631,14 @@
     },
     {
       "source": "src_components_secureplayer",
-      "target": "src_components_streamsection",
+      "target": "ref_lucide_react",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -11934,7 +11958,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/api/streams/route.ts",
-      "source_location": "L164",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -12148,6 +12172,17 @@
     },
     {
       "source": "src_app_match_slug_page",
+      "target": "src_app_match_slug_page_matchpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/match/[slug]/page.tsx",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_match_slug_page",
       "target": "src_app_match_slug_page_routeparams",
       "relation": "contains",
       "_origin": "ast",
@@ -12166,17 +12201,6 @@
       "confidence_score": 1.0,
       "source_file": "src/app/match/[slug]/page.tsx",
       "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_match_slug_page",
-      "target": "src_app_match_slug_page_matchpage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/match/[slug]/page.tsx",
-      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -12918,13 +12942,24 @@
     },
     {
       "source": "src_components_secureplayer",
+      "target": "src_components_secureplayer_serveritem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/SecurePlayer.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_secureplayer",
       "target": "src_components_secureplayer_secureplayerprops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L12",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -12935,18 +12970,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L37",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_secureplayer",
-      "target": "src_components_secureplayer_serveritem",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/SecurePlayer.tsx",
-      "source_location": "L6",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -13545,24 +13569,24 @@
     },
     {
       "source": "src_services_api",
+      "target": "src_services_api_getgamestats",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/api.ts",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_api",
       "target": "src_services_api_getheadtohead",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L112",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_api",
-      "target": "src_services_api_getcurrentstage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/api.ts",
-      "source_location": "L128",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -13578,13 +13602,24 @@
     },
     {
       "source": "src_services_api",
+      "target": "src_services_api_getcurrentstage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/api.ts",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_api",
       "target": "src_services_api_getcompetitionstandings",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L144",
+      "source_location": "L148",
       "weight": 1.0
     },
     {
@@ -13595,7 +13630,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L179",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -13606,7 +13641,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L200",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -13628,7 +13663,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L235",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -13639,7 +13674,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L246",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -13650,7 +13685,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L257",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -13661,7 +13696,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L268",
+      "source_location": "L272",
       "weight": 1.0
     },
     {
@@ -13672,7 +13707,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L283",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -13683,7 +13718,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L300",
+      "source_location": "L304",
       "weight": 1.0
     },
     {
@@ -13694,7 +13729,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L315",
+      "source_location": "L319",
       "weight": 1.0
     },
     {
@@ -13705,7 +13740,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L333",
+      "source_location": "L337",
       "weight": 1.0
     },
     {
@@ -13716,7 +13751,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L344",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
@@ -13727,7 +13762,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L365",
+      "source_location": "L369",
       "weight": 1.0
     },
     {
@@ -13738,7 +13773,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L61",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -13749,18 +13784,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L87",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_api",
-      "target": "src_services_api_getgamestats",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/api.ts",
-      "source_location": "L99",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -14413,5 +14437,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7265cd775efb74377bd44238935e393e3559b8dc"
+  "built_at_commit": "c77e5231df97623fa755a5a52d1b9c326cc98b90"
 }

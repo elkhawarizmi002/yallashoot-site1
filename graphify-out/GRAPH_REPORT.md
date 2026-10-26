@@ -1,16 +1,16 @@
-# Graph Report - yallashoot.com  (2026-09-20)
+# Graph Report - yallashoot.com  (2026-10-26)
 
 ## Corpus Check
-- 81 files · ~97,346 words
+- 81 files · ~98,378 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 407 nodes · 831 edges · 23 communities (15 shown, 6 thin omitted)
+- 407 nodes · 833 edges · 23 communities (15 shown, 6 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7265cd77`
+- Built from commit: `c77e5231`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -39,7 +39,7 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `react` - 33 edges
-2. `lucide-react` - 25 edges
+2. `lucide-react` - 26 edges
 3. `dbConnect()` - 25 edges
 4. `toLatinNumerals()` - 20 edges
 5. `getLeagueSlug()` - 19 edges
@@ -68,7 +68,7 @@
 
 ### Community 0 - "dbConnect"
 Cohesion: 0.08
-Nodes (36): mongoose, dynamic, GET(), GET(), dynamic, GET(), dynamic, GET() (+28 more)
+Nodes (39): mongoose, dynamic, GET(), GET(), dynamic, GET(), dynamic, GET() (+31 more)
 
 ### Community 1 - "StreamSection.tsx"
 Cohesion: 0.14
@@ -80,7 +80,7 @@ Nodes (30): dynamic, GET(), dynamic, GET(), dynamic, GET(), dynamic, GET() (+22 
 
 ### Community 3 - "news/[id]/page.tsx"
 Cohesion: 0.07
-Nodes (39): nextConfig, next, @tanstack/react-query, metadata, dynamic, LiveMatchesPage(), metadata, dynamic (+31 more)
+Nodes (34): @tanstack/react-query, metadata, dynamic, generateMetadata(), mongooseId(), NewsArticlePage(), PageProps, dynamic (+26 more)
 
 ### Community 4 - "package.json"
 Cohesion: 0.05
@@ -92,7 +92,7 @@ Nodes (35): FeaturedMatchHeroProps, fetchFeaturedGames(), fetchGames(), HomePage
 
 ### Community 6 - "react"
 Cohesion: 0.10
-Nodes (20): lucide-react, react, metadata, metadata, cairo, metadata, viewport, metadata (+12 more)
+Nodes (22): nextConfig, lucide-react, next, react, metadata, metadata, cairo, metadata (+14 more)
 
 ### Community 7 - "compilerOptions"
 Cohesion: 0.11
@@ -135,16 +135,16 @@ Nodes (7): dynamic, GET(), MAJOR_COMPETITION_IDS, TOP_TEAMS_IDS, CacheEntry, glo
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `react` connect `react` to `dbConnect`, `StreamSection.tsx`, `services/api.ts`, `news/[id]/page.tsx`, `package.json`, `app/page.tsx`, `[slug]/standings/page.tsx`?**
-  _High betweenness centrality (0.132) - this node is a cross-community bridge._
+  _High betweenness centrality (0.129) - this node is a cross-community bridge._
 - **Why does `lucide-react` connect `react` to `dbConnect`, `StreamSection.tsx`, `news/[id]/page.tsx`, `package.json`, `app/page.tsx`, `[slug]/standings/page.tsx`?**
-  _High betweenness centrality (0.076) - this node is a cross-community bridge._
-- **Why does `next` connect `news/[id]/page.tsx` to `dbConnect`, `services/api.ts`, `package.json`, `react`, `[slug]/standings/page.tsx`?**
+  _High betweenness centrality (0.081) - this node is a cross-community bridge._
+- **Why does `next` connect `react` to `dbConnect`, `services/api.ts`, `news/[id]/page.tsx`, `package.json`, `[slug]/standings/page.tsx`?**
   _High betweenness centrality (0.074) - this node is a cross-community bridge._
 - **What connects `eslintConfig`, `nextConfig`, `name` to the rest of the system?**
   _177 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dbConnect` be split into smaller, more focused modules?**
-  _Cohesion score 0.08144796380090498 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07662337662337662 - nodes in this community are weakly interconnected._
 - **Should `StreamSection.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.1380952380952381 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
 - **Should `services/api.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.13015873015873017 - nodes in this community are weakly interconnected._
