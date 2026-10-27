@@ -65,9 +65,9 @@ export default function SecurePlayer({
 }: SecurePlayerProps) {
   const [selectedServer, setSelectedServer] = useState(0);
 
-  // External player domain (can be easily swapped via env var)
+  // External player domain (hosted on Vercel at yalashout.online)
   const externalPlayerBase =
-    process.env.NEXT_PUBLIC_EXTERNAL_PLAYER_URL || "https://yalashout.online";
+    process.env.NEXT_PUBLIC_EXTERNAL_PLAYER_URL || "https://www.yalashout.online";
 
   const serverList =
     servers && servers.length > 0
@@ -82,18 +82,13 @@ export default function SecurePlayer({
     // 1. Monetization: trigger smartlink (respects 30s cooldown)
     triggerSmartlink();
 
-    // 2. Build target URL to sacrificial streaming domain
-    try {
-      const targetUrl = new URL(externalPlayerBase);
-      targetUrl.searchParams.set("match", String(gameId));
-      if (matchSlug) targetUrl.searchParams.set("slug", matchSlug);
-      targetUrl.searchParams.set("server", String(serverIdx + 1));
+    // 2. Build direct match URL on yalashout.online (routed via /[slug])
+    const baseUrl = externalPlayerBase.replace(/\/+$/, "");
+    const slugOrId = matchSlug || gameId;
+    const targetUrl = `${baseUrl}/${encodeURIComponent(slugOrId)}`;
 
-      // 3. Open in a new tab with nofollow / noopener protection
-      window.open(targetUrl.toString(), "_blank", "noopener,noreferrer");
-    } catch {
-      window.open(`${externalPlayerBase}/?match=${gameId}`, "_blank", "noopener,noreferrer");
-    }
+    // 3. Open in a new tab with nofollow / noopener protection
+    window.open(targetUrl, "_blank", "noopener,noreferrer");
   };
 
   // ── 1. MATCH FINISHED STATE (Clean Post-Match Summary, Zero Streams) ──
