@@ -426,15 +426,15 @@
     "semantic_hash": ""
   },
   "tasks/plan.md": {
-    "mtime": 1789671184.430575,
-    "seen": 1789911829.2166796,
-    "ast_hash": "d71e7051b0ca43e60a3ea613ab10c802",
+    "mtime": 1793102564.2784247,
+    "seen": 1793102617.4330711,
+    "ast_hash": "796a505a4dff8272992a03361038b44f",
     "semantic_hash": ""
   },
   "tasks/todo.md": {
-    "mtime": 1789910453.7322657,
-    "seen": 1789911829.2166853,
-    "ast_hash": "7d66003a82c21e2f73c9f1d372f99d89",
+    "mtime": 1793102580.1158931,
+    "seen": 1793102617.4330757,
+    "ast_hash": "2e8761645033e3e814e1d59bee4443d2",
     "semantic_hash": ""
   },
   "public/fav-icon.svg": {

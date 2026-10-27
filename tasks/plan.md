@@ -1,23 +1,47 @@
-# Implementation Plan: Native In-Feed Ad Cards & Layout Ad Balancing
+# Implementation Plan: Shared-DB External Player Architecture (yallashoot-ball.com ↔ yalashout.online)
 
 ## Overview
-Based on user analysis and screenshots:
-1. Remove redundant top banner on `/` (keeping the approved one below leagues).
-2. Create Native In-Feed Match Ad Card inside the matches grid on `/live`.
-3. Remove duplicate top banner on `/highlights` and insert a Native Highlight Ad Card inside the highlights grid.
-4. Remove duplicate top banner on `/news` and insert a Native Article Ad Card inside the articles grid.
-5. In `/team/[id]`, move the ad down into the empty space below "آخر النتائج" in the left sidebar.
+Decompose the streaming separation architecture:
+1. Keep the main domain `yallashoot-ball.com` (hosted on private VPS) 100% clean of embedded video streams, serving purely as an SEO-authoritative sports information & schedule portal.
+2. Leverage the existing `yalla_player` project (hosted on Vercel at `yalashout.online`), which shares the exact same MongoDB database (`LiveMatch`).
+3. Route live viewers from `yallashoot-ball.com` to `yalashout.online` via an external gateway CTA with `rel="nofollow noopener noreferrer"`.
+4. Deploy the updated build to the private VPS.
 
 ## Architecture Decisions
-- Remove `<LayoutAdBanner />` from `src/app/layout.tsx` to stop duplicate banners on `/`, `/highlights`, `/news`, and `/team`.
-- Keep top `<ResponsiveAdBanner />` in `/live` as requested with the green checkmark.
-- Create reusable `src/components/ads/NativeFeedAdCard.tsx` or inject native ad cards with exact styling of parent grid items.
-- In `src/components/TeamDetailsClient.tsx`, insert a 300x250 ad widget inside the sidebar (`lg:col-span-1 space-y-6`) right under `resultsList`.
+- **Reuse Existing Player (`yalashout.online`)**: Strongly recommended over building a new player from scratch. Both projects connect to the same MongoDB Atlas cluster (`yallatir_data`), meaning match updates, daily schedules, and stream links are automatically synchronized without custom API bridges.
+- **Throwaway / Shield Role for `yalashout.online`**: Hosted on Vercel, this domain serves the video player. Even if rightsholders (LeakID, beIN) target it, the primary ranking domain (`yallashoot-ball.com`) on the VPS remains untouched.
+- **Strict Anti-Indexing on `yalashout.online`**: Add `<meta name="robots" content="noindex, nofollow">` and `Disallow: /` so Google never indexes the player URLs, minimizing automated DMCA sweeps.
+- **Clean Fallback for Finished Matches on Main Site**: Once a match finishes, all broadcast triggers disappear, and the page renders editorial score/stats to neutralize existing DMCA notices.
 
 ## Task List
-- [ ] Task 1: Remove `<LayoutAdBanner />` from `src/app/layout.tsx`
-- [ ] Task 2: Update `/live` page with top banner and Native Match Ad Card in the grid
-- [ ] Task 3: Update `/highlights` (`HighlightsClient.tsx`) with Native Highlight Ad Card in the grid
-- [ ] Task 4: Update `/news` (`news/page.tsx`) with Native Article Ad Card in the grid
-- [ ] Task 5: Move ad in `/team/[id]` (`TeamDetailsClient.tsx`) into the empty space below "آخر النتائج"
-- [ ] Task 6: Verify build (`npm run build`)
+
+### Phase 1: Player Routing & Shared Database Alignment
+- [ ] Task 1: Verify URL routing contract between `yallashoot-ball.com` and `yalashout.online` (ensure `yalashout.online` accepts `match` ID and `slug` query parameters or pathname).
+- [ ] Task 2: Verify `NEXT_PUBLIC_EXTERNAL_PLAYER_URL` environment configuration in `yallashoot.com`.
+
+### Checkpoint 1: Routing Verification
+- [ ] Test URL generation for live and upcoming matches: links resolve to `https://yalashout.online/?match=[id]&slug=[slug]`.
+
+### Phase 2: Gateway UI & SEO Neutralization on Main Site
+- [ ] Task 3: Ensure `SecurePlayer.tsx` in `yallashoot.com` displays the multi-server gateway with zero stream embeds, opening `yalashout.online` in a new window.
+- [ ] Task 4: Ensure dynamic metadata in `src/app/match/[slug]/page.tsx` sets `type: "website"` and post-match titles without "بث مباشر".
+- [ ] Task 5: Run production build `npm run build` and verify 0 errors.
+
+### Checkpoint 2: Main Site Clean Verification
+- [ ] Local build passes (`next build` exit code 0).
+- [ ] No HLS or video tags rendered in match page server output.
+
+### Phase 3: Player Domain Shielding (`yalashout.online`)
+- [ ] Task 6: Add `robots.txt` (`Disallow: /`) and `<meta name="robots" content="noindex, nofollow">` to the `yalla_player` project to prevent search engine indexing.
+
+### Phase 4: Production Deployment on VPS
+- [ ] Task 7: Git commit & push clean codebase to `origin/main`.
+- [ ] Task 8: Pull updates on the private VPS server and restart the Node/PM2 service.
+- [ ] Task 9: Purge Cloudflare cache and verify live site `https://www.yallashoot-ball.com/match/psg-lyon-4735227`.
+
+## Risks and Mitigations
+| Risk | Impact | Mitigation |
+|---|---|---|
+| DMCA notice against `yalashout.online` | Low | Domain is disposable. A new player domain can be swapped in `.env.local` (`NEXT_PUBLIC_EXTERNAL_PLAYER_URL`) in 60 seconds without touching the main site code. |
+| VPS caching old build | Med | Run `git pull && npm run build && pm2 restart <app>` on the VPS, then Cloudflare Purge Everything. |
+| User drops off during redirect | Low | Sleek CTA with prominent server selector and seamless `_blank` transition keeps match front and center. |

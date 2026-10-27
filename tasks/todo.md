@@ -1,41 +1,61 @@
-# SEO, Slugs & Bing/Google Cleanup Todo List
+# Todo Tasks: Shared-DB External Player Architecture & VPS Deployment
 
-## Phase 1: Foundation (SEO Slugs & Redirection Engine)
-- [ ] Task 1.1: Create `src/lib/seoSlugs.ts` (helper mapping leagues, teams to SEO slugs + ID parser)
-- [ ] Task 1.2: Create `/league/[slug]/standings` page with 301 backward redirect from `/standings/[leagueId]`
-- [ ] Task 1.3: Update `/team/[id]` page to support `/team/[slug]` (e.g. `barcelona-132`) with 301 redirect for legacy ID routes
+## Phase 1: Shared Database & Player Routing Contract
+- [ ] **Task 1: Verify URL Routing Contract with `yalashout.online`**
+  - **Description:** Define and verify the exact URL parameters (`match`, `slug`, `server`) passed from `yallashoot-ball.com` so `yalla_player` on Vercel opens the correct match stream from the shared database.
+  - **Acceptance criteria:**
+    - URL structure formatted as: `https://yalashout.online/?match={gameId}&slug={slug}&server={serverIdx}` (or corresponding route).
+    - `NEXT_PUBLIC_EXTERNAL_PLAYER_URL` set in `yallashoot.com/.env.local`.
+  - **Verification:**
+    - Check `.env.local` has `NEXT_PUBLIC_EXTERNAL_PLAYER_URL=https://yalashout.online`.
 
-## Checkpoint 1: Foundation Verification
-- [ ] Run `npx tsc --noEmit`
-- [ ] Verify `/league/la-liga-11/standings` loads league standings
-- [ ] Verify `/standings/11` issues 301 redirect to `/league/la-liga-11/standings`
-- [ ] Verify `/team/barcelona-132` loads team profile
-- [ ] Verify `/team/132` issues 301 redirect to `/team/barcelona-132`
+## Phase 2: Gateway UI & SEO Neutralization in Main Site (`yallashoot.com`)
+- [x] **Task 2: Replace Embedded Video Player with External Gateway Card**
+  - **Description:** Redesign `SecurePlayer.tsx` in `yallashoot.com` to render an external stream gateway card for live matches with server switching and `rel="nofollow noopener"` external links, and an informational summary for finished matches.
+  - **Acceptance criteria:**
+    - Zero `video` or `hls.js` instances rendered on `yallashoot-ball.com`.
+    - Clicking the watch button triggers smartlink and opens `yalashout.online` in a new tab.
+  - **Verification:**
+    - Verified in `src/components/SecurePlayer.tsx`.
+- [x] **Task 3: Neutralize OpenGraph and Schema Metadata for Finished Matches**
+  - **Description:** Remove `type: "video.other"` from `src/app/match/[slug]/page.tsx` and dynamically alter H1 and title for finished matches to show score and summary rather than live stream keywords.
+  - **Acceptance criteria:**
+    - OpenGraph type is `"website"`.
+    - Finished matches use post-match editorial metadata.
+  - **Verification:**
+    - Verified in `src/app/match/[slug]/page.tsx`.
+- [x] **Task 4: Production Build Verification**
+  - **Description:** Run full Next.js production build to ensure TypeScript types and bundle succeed.
+  - **Acceptance criteria:**
+    - `npm run build` completes with exit code 0.
+  - **Verification:**
+    - Verified `next build` compiled in 43s with code 0.
 
----
+## Phase 3: Player Domain Shielding (`yalashout.online`)
+- [ ] **Task 5: Shield `yalashout.online` from Search Indexing**
+  - **Description:** Add `robots.txt` (`Disallow: /`) and `<meta name="robots" content="noindex, nofollow" />` in `yalla_player` on Vercel.
+  - **Acceptance criteria:**
+    - `https://yalashout.online/robots.txt` returns `Disallow: /`.
+    - Google does not index player URLs.
+  - **Verification:**
+    - Check `robots.txt` deployment on Vercel.
 
-## Phase 2: Internal Links & Structural SEO
-- [ ] Task 2.1: Update `SidebarLeagues.tsx` to use new `/league/[slug]/standings` URLs
-- [ ] Task 2.2: Update Header and Navigation links to use the new league and team slug paths
-- [ ] Task 2.3: Update team links inside match details and team components to use `/team/[slug]`
-
-## Checkpoint 2: Link Audit
-- [ ] Verify internal links in UI navigate to clean slug URLs
-- [ ] Ensure no broken internal links or redirect loops
-
----
-
-## Phase 3: Bing Webmaster Tools & GSC Error Fixes
-- [ ] Task 3.1: Add missing `<h1>` tags to team page header (`TeamDetailsClient.tsx`) and highlights page (`HighlightsClient.tsx`)
-- [ ] Task 3.2: Shorten page titles across `layout.tsx`, `live/page.tsx`, `match/[slug]/page.tsx`, `team/[id]/page.tsx` to be ≤ 60 characters
-- [ ] Task 3.3: Rebuild `src/app/sitemap.ts` to include all 15 leagues, clean team URLs, and prune stale match links
-- [ ] Task 3.4: Update IndexNow integration (`indexing.ts` & `/api/cron/indexnow`) to submit all core pages and slug URLs dynamically
-- [ ] Task 3.5: Add 301 permanent redirects in `next.config.mjs` for `/ar/*`, `/basketball/*`, `/volleyball/*` to eradicate 1,279 GSC 404s
-- [ ] Task 3.6: Update `/match/[slug]` to gracefully handle missing/ended matches without returning raw 404s
-
-## Checkpoint 3: Production Build & Full Verification
-- [ ] Run `npx tsc --noEmit` -> 0 errors
-- [ ] Run `npm run build` -> exit code 0
-- [ ] Test legacy 404 redirect: `/ar/basketball/league/acb-14` -> 301 to `/`
-- [ ] Test sitemap generation: `http://localhost:3000/sitemap.xml`
-- [ ] Test IndexNow submission endpoint: `http://localhost:3000/api/cron/indexnow`
+## Phase 4: Production Deployment on Private VPS
+- [x] **Task 6: Git Commit & Push Code to GitHub Repository**
+  - **Description:** Commit and push all clean files to `origin/main` (`elkhawarizmi002/yallashoot-site1`).
+  - **Acceptance criteria:**
+    - Commit `53c084a` pushed to GitHub.
+  - **Verification:**
+    - `git ls-remote origin main` confirms commit is at HEAD.
+- [ ] **Task 7: Pull & Restart on Private VPS Server**
+  - **Description:** On the VPS hosting `yallashoot-ball.com`, pull latest changes from `main`, run `npm run build`, and restart the service (PM2 / systemd).
+  - **Acceptance criteria:**
+    - VPS runs the latest build containing the external gateway.
+  - **Verification:**
+    - `curl -s https://www.yallashoot-ball.com/robots.txt` reflects the updated rules.
+- [ ] **Task 8: Purge Cloudflare Cache**
+  - **Description:** Purge cache in Cloudflare dashboard to immediately serve the new build to all users.
+  - **Acceptance criteria:**
+    - `https://www.yallashoot-ball.com/match/psg-lyon-4735227` shows the gateway card without embedded player.
+  - **Verification:**
+    - Hard refresh in browser (`Ctrl+Shift+R`).
