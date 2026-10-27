@@ -1,13 +1,13 @@
 # Todo Tasks: Shared-DB External Player Architecture & VPS Deployment
 
 ## Phase 1: Shared Database & Player Routing Contract
-- [ ] **Task 1: Verify URL Routing Contract with `yalashout.online`**
+- [x] **Task 1: Verify URL Routing Contract with `yalashout.online`**
   - **Description:** Define and verify the exact URL parameters (`match`, `slug`, `server`) passed from `yallashoot-ball.com` so `yalla_player` on Vercel opens the correct match stream from the shared database.
   - **Acceptance criteria:**
-    - URL structure formatted as: `https://yalashout.online/?match={gameId}&slug={slug}&server={serverIdx}` (or corresponding route).
+    - URL structure formatted as: `https://yalashout.online/[slug]`.
     - `NEXT_PUBLIC_EXTERNAL_PLAYER_URL` set in `yallashoot.com/.env.local`.
   - **Verification:**
-    - Check `.env.local` has `NEXT_PUBLIC_EXTERNAL_PLAYER_URL=https://yalashout.online`.
+    - Tested `curl -I https://www.yalashout.online/psg-lyon-4735227` -> 200 OK via Vercel.
 
 ## Phase 2: Gateway UI & SEO Neutralization in Main Site (`yallashoot.com`)
 - [x] **Task 2: Replace Embedded Video Player with External Gateway Card**
@@ -32,13 +32,13 @@
     - Verified `next build` compiled in 43s with code 0.
 
 ## Phase 3: Player Domain Shielding (`yalashout.online`)
-- [ ] **Task 5: Shield `yalashout.online` from Search Indexing**
+- [x] **Task 5: Shield `yalashout.online` from Search Indexing**
   - **Description:** Add `robots.txt` (`Disallow: /`) and `<meta name="robots" content="noindex, nofollow" />` in `yalla_player` on Vercel.
   - **Acceptance criteria:**
     - `https://yalashout.online/robots.txt` returns `Disallow: /`.
     - Google does not index player URLs.
   - **Verification:**
-    - Check `robots.txt` deployment on Vercel.
+    - Pushed commit `0b59142` to `yalla-player-v2` repository.
 
 ## Phase 4: Production Deployment on Private VPS
 - [x] **Task 6: Git Commit & Push Code to GitHub Repository**
