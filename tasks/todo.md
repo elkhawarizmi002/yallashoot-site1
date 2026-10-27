@@ -47,15 +47,17 @@
     - Commit `53c084a` pushed to GitHub.
   - **Verification:**
     - `git ls-remote origin main` confirms commit is at HEAD.
-- [ ] **Task 7: Pull & Restart on Private VPS Server**
-  - **Description:** On the VPS hosting `yallashoot-ball.com`, pull latest changes from `main`, run `npm run build`, and restart the service (PM2 / systemd).
+- [x] **Task 7: Pull & Restart on Private VPS Server**
+  - **Description:** On the VPS hosting `yallashoot-ball.com`, upload latest updates, run `npm run build`, and restart PM2 process `yallashoot-ball`.
   - **Acceptance criteria:**
     - VPS runs the latest build containing the external gateway.
   - **Verification:**
-    - `curl -s https://www.yallashoot-ball.com/robots.txt` reflects the updated rules.
-- [ ] **Task 8: Purge Cloudflare Cache**
-  - **Description:** Purge cache in Cloudflare dashboard to immediately serve the new build to all users.
+    - Verified `pm2 status` -> `yallashoot-ball` online.
+    - Verified `curl http://localhost:3000/robots.txt` contains LeakID blocks.
+- [x] **Task 8: Live Verification**
+  - **Description:** Verify live site `https://www.yallashoot-ball.com/match/psg-lyon-4735227` serves the clean gateway with `og:type=website` and zero `video.other`.
   - **Acceptance criteria:**
-    - `https://www.yallashoot-ball.com/match/psg-lyon-4735227` shows the gateway card without embedded player.
+    - `https://www.yallashoot-ball.com/match/psg-lyon-4735227` contains no `video.other` and opens `https://www.yalashout.online/[slug]`.
   - **Verification:**
+    - Live request confirmed: `video.other` = False, `og:type` = website.
     - Hard refresh in browser (`Ctrl+Shift+R`).
