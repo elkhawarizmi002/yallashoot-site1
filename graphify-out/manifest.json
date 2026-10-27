@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "src/components/SecurePlayer.tsx": {
-    "mtime": 1793045869.1553795,
-    "seen": 1793045952.6131804,
-    "ast_hash": "ec83eaa9d65fedf79ad043312b04bffd",
+    "mtime": 1793106637.5247998,
+    "seen": 1793106692.8415024,
+    "ast_hash": "32073594085558ae020853ca8e88efc9",
     "semantic_hash": ""
   },
   "src/components/SidebarLeagues.tsx": {
@@ -432,9 +432,9 @@
     "semantic_hash": ""
   },
   "tasks/todo.md": {
-    "mtime": 1793102580.1158931,
-    "seen": 1793102617.4330757,
-    "ast_hash": "2e8761645033e3e814e1d59bee4443d2",
+    "mtime": 1793104235.6495736,
+    "seen": 1793106692.8418422,
+    "ast_hash": "4abb2ec26c05507d43c40fb3613f475a",
     "semantic_hash": ""
   },
   "public/fav-icon.svg": {

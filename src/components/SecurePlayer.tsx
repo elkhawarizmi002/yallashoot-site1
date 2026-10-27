@@ -84,8 +84,10 @@ export default function SecurePlayer({
 
     // 2. Build direct match URL on yalashout.online (routed via /[slug])
     const baseUrl = externalPlayerBase.replace(/\/+$/, "");
-    const slugOrId = matchSlug || gameId;
-    const targetUrl = `${baseUrl}/${encodeURIComponent(slugOrId)}`;
+    const rawSlug = matchSlug || gameId;
+    // Strip trailing -ID suffix (e.g. -4818603) because MongoDB stores clean slug (e.g. ratchaburi-fc-kashiwa-reysol)
+    const cleanSlug = rawSlug ? rawSlug.replace(/-\d+$/, "") : rawSlug;
+    const targetUrl = `${baseUrl}/${encodeURIComponent(cleanSlug)}`;
 
     // 3. Open in a new tab with nofollow / noopener protection
     window.open(targetUrl, "_blank", "noopener,noreferrer");
